@@ -1,7 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { AuthService } from '../../common/services/auth/auth.service';
 import * as UsersSelectors from './../../common/store/users/users.selectors';
 import { LoginForm, LoginFormSchema } from './login-form';
 
@@ -16,7 +18,9 @@ export class LoginComponent implements OnDestroy {
   readonly users$ = this.store.select(UsersSelectors.selectUsers);
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly store: Store) {
+  constructor(private readonly store: Store,
+              private readonly authService: AuthService,
+              private readonly matSnackBar: MatSnackBar) {
     this.form = this.getForm();
     this.subscribeToFormChanges();
   }
@@ -31,11 +35,28 @@ export class LoginComponent implements OnDestroy {
   }
 
   submit(): void {
+    // Show errors to the user if there are.
     this.form.updateValueAndValidity();
+
     if (this.form.invalid) {
       return;
     }
-    // TODO: send login request & handling error / notification
+
+    this.isPasswordVisible = false;
+
+    // Prevent user from changing the form values during the login process.
+    this.form.disable();
+
+    const formValue = this.form.getRawValue();
+    this.authService.login(formValue).subscribe({
+      next: () => {
+        // TODO: Handle redirection.
+      },
+      error: _ => {
+        this.matSnackBar.open('Login failed as credentials are invalid.', 'OK');
+        this.form.enable();
+      }
+    });
   }
 
   private getForm(): LoginForm {

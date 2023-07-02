@@ -1,20 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
-import { BaseUser } from '../../definitions/base-user';
+import { User } from '../../definitions/user';
 import * as UsersActions from './users.actions';
 
 export const name = 'users';
 
 export interface UsersState {
-  users: Array<BaseUser>;
+  users: Array<User>;
 }
 
 export const initialState: Readonly<UsersState> = {
-  users: [
-    { name: 'admin', id: 6781 },
-    { name: 'operator', id: 4336 },
-    { name: 'customer', id: 8512 },
-    { name: 'employee', id: 3631 }
-  ]
+  users: []
 };
 
 export const reducer = createReducer(
