@@ -1,1 +1,47 @@
-<p>login works!</p>
+<mat-card class="login-card">
+  <mat-card-header class="login-card__header">
+    <mat-card-title>Sign In</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="login-card__content">
+
+    <form (ngSubmit)="submit()" class="login-form">
+
+      <div class="login-form__item-container">
+        <mat-form-field class="login-form__item">
+          <mat-label>Username</mat-label>
+          <mat-select [formControl]="form.controls.user">
+            <mat-option *ngFor="let user of (users$ | async)" [value]="user">{{user.name}}</mat-option>
+          </mat-select>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error>Please choose a user from the list.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="form.controls.user.value" class="login-form__item-container">
+        <mat-form-field class="login-form__item">
+          <mat-label>ID</mat-label>
+          <input [formControl]="form.controls.id" matInput>
+          <mat-error *ngIf="form.controls.id.hasError('required')">Required field.</mat-error>
+          <mat-error *ngIf="form.controls.id.hasError('pattern')">Must be a positive number.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="login-form__item-container">
+        <mat-form-field class="login-form__item">
+          <mat-label>Password</mat-label>
+          <input [formControl]="form.controls.password" [type]="isPasswordVisible ? 'text' : 'password'" matInput>
+          <mat-icon matPrefix>password</mat-icon>
+          <button (click)="togglePasswordVisibility()" mat-icon-button matSuffix type="button">
+            <mat-icon>{{isPasswordVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </button>
+          <mat-error>Required field.</mat-error>
+        </mat-form-field>
+
+        <button class="login-form__submit" color="primary" mat-raised-button type="submit">Submit</button>
+      </div>
+
+    </form>
+
+  </mat-card-content>
+</mat-card>
