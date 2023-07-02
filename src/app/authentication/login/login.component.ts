@@ -1,7 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, of, Subject, takeUntil } from 'rxjs';
-import { BaseUser } from '../../common/definitions/base-user';
+import { Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
+import * as UsersSelectors from './../../common/store/users/users.selectors';
 import { LoginForm, LoginFormSchema } from './login-form';
 
 @Component({
@@ -12,16 +13,10 @@ import { LoginForm, LoginFormSchema } from './login-form';
 export class LoginComponent implements OnDestroy {
   isPasswordVisible = false;
   readonly form: LoginForm;
-  // TODO: fetch users from the store
-  readonly users$: Observable<Array<BaseUser>> = of([
-    { name: 'admin', id: 6781 },
-    { name: 'operator', id: 4336 },
-    { name: 'customer', id: 8512 },
-    { name: 'employee', id: 3631 }
-  ]);
+  readonly users$ = this.store.select(UsersSelectors.selectUsers);
   private readonly destroy$ = new Subject<void>();
 
-  constructor() {
+  constructor(private readonly store: Store) {
     this.form = this.getForm();
     this.subscribeToFormChanges();
   }
