@@ -13,6 +13,7 @@ import { LoginForm, LoginFormSchema } from './login-form';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnDestroy {
+  isLoginInProgress = false;
   isPasswordVisible = false;
   readonly form: LoginForm;
   readonly users$ = this.store.select(UsersSelectors.selectUsers);
@@ -42,21 +43,24 @@ export class LoginComponent implements OnDestroy {
       return;
     }
 
+    this.isLoginInProgress = true;
     this.isPasswordVisible = false;
 
     // Prevent user from changing the form values during the login process.
     this.form.disable();
 
     const formValue = this.form.getRawValue();
-    this.authService.login(formValue).subscribe({
-      next: () => {
-        // TODO: Handle redirection.
-      },
-      error: _ => {
-        this.matSnackBar.open('Login failed as credentials are invalid.', 'OK');
-        this.form.enable();
-      }
-    });
+    this.authService.login(formValue)
+      .subscribe({
+        next: () => {
+          // TODO: Handle redirection.
+        },
+        error: _ => {
+          this.matSnackBar.open('Login failed as credentials are invalid.', 'OK');
+          this.form.enable();
+          this.isLoginInProgress = false;
+        }
+      });
   }
 
   private getForm(): LoginForm {

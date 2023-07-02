@@ -1,4 +1,6 @@
 <mat-card class="login-card">
+  <mat-progress-bar *ngIf="isLoginInProgress" mode="indeterminate"></mat-progress-bar>
+
   <mat-card-header class="login-card__header">
     <mat-card-title>Login</mat-card-title>
   </mat-card-header>
