@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { map, Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import * as UsersSelectors from '../../store/users/users.selectors';
 
 @Injectable({
@@ -23,6 +23,9 @@ export class AuthGuardService {
 
   check(): void {
     this.isThereLoggedInUser()
+      .pipe(
+        take(1)
+      )
       .subscribe(isThere => {
         if (isThere) {
           this.redirectToApplications();

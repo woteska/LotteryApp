@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { delay, map, Observable } from 'rxjs';
+import { delay, map, Observable, take } from 'rxjs';
 import { LoginDto } from '../../definitions/login-dto';
 import { UserCredentialsCheck } from '../../definitions/user-credentials-check';
 import * as UsersActions from './../../store/users/users.actions';
@@ -21,6 +21,7 @@ export class AuthService {
 
     return userCredentialsCheck$
       .pipe(
+        take(1),
         delay(500), // TODO: Remove fake waiting time when there is a real back-end service call behind.
         map(check => {
           if (check !== UserCredentialsCheck.Valid) {

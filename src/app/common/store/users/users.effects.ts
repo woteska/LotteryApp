@@ -17,12 +17,20 @@ export class UsersEffects {
       ),
       map(_ => {
         return UsersActions.clearLoggedInUser();
-      }),
+      })
+    );
+  });
+
+  readonly postLogout$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(
+        UsersActions.clearLoggedInUser
+      ),
       tap(_ => {
         this.authGuardService.check();
       })
     );
-  });
+  }, { dispatch: false });
 
   constructor(private readonly actions$: Actions,
               private readonly store: Store,
