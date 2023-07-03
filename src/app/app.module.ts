@@ -9,8 +9,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appInitializerFactory } from './app-initializer-factory';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserInitializerService } from './common/services/user-initializer/user-initializer.service';
 import { metaReducers, reducers } from './common/store';
-import { UserInitializerService } from './user-initializer.service';
 
 @NgModule({
   declarations: [

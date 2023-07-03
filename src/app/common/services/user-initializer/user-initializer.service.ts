@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import { UserManagementApiService } from './common/api/user-management/user-management-api.service';
-import * as UsersActions from './common/store/users/users.actions';
+import { UserManagementApiService } from '../../api/user-management/user-management-api.service';
+import * as UsersActions from '../../store/users/users.actions';
 
 /**
  * @class UserInitializerService populates the NgRx/Store with users.
