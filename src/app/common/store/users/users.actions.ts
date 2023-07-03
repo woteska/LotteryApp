@@ -12,3 +12,7 @@ export const setUsers = createAction(`${prefix} Set Users`,
 
 export const setLoggedInUser = createAction(`${prefix} Set Logged In User`,
   props<{ user: BaseUser; }>());
+
+export const logout = createAction(`${prefix} Logout`);
+
+export const clearLoggedInUser = createAction(`${prefix} Clear Logged In User`);

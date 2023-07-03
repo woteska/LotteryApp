@@ -1,0 +1,12 @@
+<mat-toolbar color="accent">
+  <span>Lottery Game</span>
+  <div class="spacer"></div>
+  <ng-container *ngIf="loggedInUser$ | async as loggedInUser">
+    <span>{{loggedInUser.name}}</span>
+    <button (click)="logout()" [matTooltip]="'Logout'" mat-icon-button>
+      <mat-icon>logout</mat-icon>
+    </button>
+  </ng-container>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

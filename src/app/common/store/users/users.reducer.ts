@@ -25,5 +25,9 @@ export const reducer = createReducer(
   on(UsersActions.setLoggedInUser, (state, { user }): UsersState => ({
     ...state,
     loggedInUser: { ...user }
+  })),
+  on(UsersActions.clearLoggedInUser, (state): UsersState => ({
+    ...state,
+    loggedInUser: null
   }))
 );
