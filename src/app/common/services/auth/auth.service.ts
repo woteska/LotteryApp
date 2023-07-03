@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { delay, map, Observable } from 'rxjs';
 import { LoginDto } from '../../definitions/login-dto';
 import { UserCredentialsCheck } from '../../definitions/user-credentials-check';
+import * as UsersActions from './../../store/users/users.actions';
 import * as UsersSelectors from './../../store/users/users.selectors';
 
 @Injectable({
@@ -25,6 +26,8 @@ export class AuthService {
           if (check !== UserCredentialsCheck.Valid) {
             throw new Error('Invalid user credentials.');
           }
+          const { password, ...rest } = loginDto;
+          this.store.dispatch(UsersActions.setLoggedInUser({ user: rest }));
           return;
         })
       );

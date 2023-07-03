@@ -29,3 +29,5 @@ export const selectUserCredentialsCheck = (props: { loginDto: LoginDto }) =>
 
     }
   );
+
+const selectLoggedInUser = createSelector(selectUsersState, state => state.loggedInUser);
