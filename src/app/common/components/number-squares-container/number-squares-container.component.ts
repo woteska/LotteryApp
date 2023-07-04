@@ -24,7 +24,7 @@ export class NumberSquaresContainerComponent {
   @Input() selectedValues: Array<number> = [];
   @Input() isDisabled = false;
   @Input() offset = 1;
-  @Input() squaresSize = '2rem';
+  @Input() squaresSize = '1.8rem';
   @Input() squaresGap = '0.2rem';
   @Output() readonly selectedChange = new EventEmitter<NumberSquaresContainerSelectedChange>();
 

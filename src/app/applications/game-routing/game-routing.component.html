@@ -1,0 +1,26 @@
+<app-container [title]="'Game'">
+
+  <div class="app-body">
+
+    <mat-card class="game-card">
+      <mat-card-content>
+        <app-game (deleteValues)="onDeleteValues($event)"
+                  (generateRandomValues)="onRandom($event)"
+                  (selectionChange)="onSelectionChange($event)"
+                  [gameValidity]="gameValidity1$ | async"
+                  [game]="(game1$ | async) || null"></app-game>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="game-card">
+      <mat-card-content>
+        <app-game (deleteValues)="onDeleteValues($event)"
+                  (generateRandomValues)="onRandom($event)"
+                  (selectionChange)="onSelectionChange($event)"
+                  [gameValidity]="gameValidity2$ | async"
+                  [game]="(game2$ | async) || null"></app-game>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</app-container>

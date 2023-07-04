@@ -19,7 +19,7 @@ export class PlaygroundValidityPipe implements PipeTransform {
       return `Error: ${playgroundValidity.missingCount} marks are missing`;
     }
     if (playgroundValidity.overflowCount) {
-      return `Error: Please remove ${playgroundValidity.overflowCount} mark`;
+      return `Error: Please remove ${playgroundValidity.overflowCount} marks`;
     }
     return '';
   }
