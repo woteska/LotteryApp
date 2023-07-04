@@ -1,13 +1,11 @@
 @use '../../../../styles/variables';
 
-.number-square {
+// TODO: Auto-sizing of content with https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries
+
+.square {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.2rem;
-  width: 20px;
-  height: 20px;
-  font-size: 1.2rem;
   color: variables.$square-color;
   border: variables.$square-border;
   cursor: pointer;
@@ -18,9 +16,18 @@
     opacity: 0.5;
   }
 
-  .number-square__mark {
+  .square__value {
+    font-size: 150%;
+  }
+
+  .square__value,
+  .square__mark {
+    line-height: 0;
+  }
+
+  .square__mark {
     position: absolute;
     color: variables.$square-mark-color;
-    font-size: 1.8rem;
+    font-size: 300%;
   }
 }

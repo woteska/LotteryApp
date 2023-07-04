@@ -1,7 +1,0 @@
-<div (click)="toggleSelection()"
-     [matRippleDisabled]="isDisabled"
-     [ngClass]="{'number-square': true, 'number-square--disabled': isDisabled}"
-     matRipple>
-  <span *ngIf="isSelected" class="number-square__mark">&times;</span>
-  <span class="number-square__number">{{number}}</span>
-</div>

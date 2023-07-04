@@ -1,0 +1,16 @@
+<div (click)="onSelect()"
+     [matRippleCentered]="true"
+     [matRippleDisabled]="isDisabled"
+     [ngClass]="{
+     'square': true,
+     'square--disabled': isDisabled
+     }"
+     [ngStyle]="{
+     'width': size,
+     'height': size
+     }"
+     matRipple>
+  <span *ngIf="isSelected"
+        class="square__mark">&times;</span>
+  <span class="square__value">{{value}}</span>
+</div>
