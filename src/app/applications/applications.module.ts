@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AppContainerComponent } from '../common/components/app-container/app-container.component';
 import { DeleteButtonComponent } from '../common/components/delete-button/delete-button.component';
 import {
   NumberSquaresContainerComponent
@@ -25,7 +26,8 @@ import { GameComponent } from './game/game.component';
     MatIconModule,
     RandomButtonComponent,
     DeleteButtonComponent,
-    PlayButtonComponent
+    PlayButtonComponent,
+    AppContainerComponent
   ]
 })
 export class ApplicationsModule {

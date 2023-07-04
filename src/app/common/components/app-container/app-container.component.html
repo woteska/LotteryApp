@@ -1,12 +1,22 @@
-<mat-toolbar [color]="color">
-  <span>Lottery Game</span>
-  <div class="spacer"></div>
-  <ng-container *ngIf="loggedInUser$ | async as loggedInUser">
-    <span>{{loggedInUser.name}}</span>
-    <button (click)="logout()" [matTooltip]="'Logout'" mat-icon-button>
-      <mat-icon>logout</mat-icon>
-    </button>
-  </ng-container>
-</mat-toolbar>
+<div class="app">
+  <mat-toolbar [color]="color" class="app__toolbar">
+    <span>LotteryApp</span>
+    <div class="spacer"></div>
+    <ng-container *ngIf="loggedInUser$ | async as loggedInUser">
+      <span>{{loggedInUser.name}}</span>
+      <button (click)="logout()" [matTooltip]="'Logout'" mat-icon-button>
+        <mat-icon>logout</mat-icon>
+      </button>
+    </ng-container>
+  </mat-toolbar>
 
-<router-outlet></router-outlet>
+  <mat-toolbar *ngIf="title"
+               class="app__breadcrumb">
+    <span>{{title}}</span>
+  </mat-toolbar>
+
+  <div class="app__content">
+    <router-outlet></router-outlet>
+    <ng-content></ng-content>
+  </div>
+</div>

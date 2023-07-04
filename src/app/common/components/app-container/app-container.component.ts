@@ -20,6 +20,7 @@ import * as UsersSelectors from '../../store/users/users.selectors';
 })
 export class AppContainerComponent {
   @Input() color: ThemePalette = 'primary';
+  @Input() title = '';
   readonly loggedInUser$ = this.store.select(UsersSelectors.selectLoggedInUser);
 
   constructor(private readonly store: Store) {

@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+import { AppContainerComponent } from '../../common/components/app-container/app-container.component';
 import { DeleteButtonComponent } from '../../common/components/delete-button/delete-button.component';
 import {
   NumberSquaresContainerComponent
@@ -18,7 +21,12 @@ describe('GameComponent', () => {
         RandomButtonComponent,
         DeleteButtonComponent,
         PlayButtonComponent,
-        NumberSquaresContainerComponent
+        NumberSquaresContainerComponent,
+        StoreModule,
+        AppContainerComponent
+      ],
+      providers: [
+        provideMockStore()
       ]
     });
     fixture = TestBed.createComponent(GameComponent);
