@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { AuthGuardService } from '../../common/guards/auth/auth-guard.service';
 import { AuthService } from '../../common/services/auth/auth.service';
 import * as UsersSelectors from './../../common/store/users/users.selectors';
 import { LoginForm, LoginFormSchema } from './login-form';
@@ -23,8 +22,7 @@ export class LoginComponent implements OnDestroy {
 
   constructor(private readonly store: Store,
               private readonly authService: AuthService,
-              private readonly matSnackBar: MatSnackBar,
-              private readonly authGuardService: AuthGuardService) {
+              private readonly matSnackBar: MatSnackBar) {
     this.form = this.getForm();
     this.subscribeToFormChanges();
   }
@@ -55,9 +53,6 @@ export class LoginComponent implements OnDestroy {
     const formValue = this.form.getRawValue();
     this.authService.login(formValue)
       .subscribe({
-        next: () => {
-          this.authGuardService.check();
-        },
         error: _ => {
           this.matSnackBar.open('Login failed as credentials are invalid.', 'OK');
           this.form.enable();
