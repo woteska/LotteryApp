@@ -1,0 +1,20 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .game__playground-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .game__playground {
+    margin: 1rem;
+  }
+
+  .game__playground-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

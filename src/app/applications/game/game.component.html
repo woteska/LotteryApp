@@ -1,1 +1,22 @@
-<p>game works!</p>
+<div class="game">
+  <div class="game__playground-container">
+    <div *ngFor="let _ of containers; let index = index" class="game__playground">
+      <div class="game__playground-inner">
+        <div class="game__playground-actions">
+          <app-random-button (clicked)="random(index)"></app-random-button>
+          <app-delete-button (clicked)="delete(index)"></app-delete-button>
+        </div>
+        <app-number-squares-container (selectedChange)="onNumbersSquareSelectedChange($event)"
+                                      [containerId]="index + 1"
+                                      [numberOfSquares]="numberOfSquares"
+                                      [selectedValues]="selected"
+                                      [squaresPerColumn]="squaresPerColumn"
+                                      class="game__playground-squares-container"></app-number-squares-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="game_actions">
+    <app-play-button (click)="play()"></app-play-button>
+  </div>
+</div>
