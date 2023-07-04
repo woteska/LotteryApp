@@ -16,7 +16,7 @@ import { NumberSquaresContainerSelectedChange } from './number-squares-container
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NumberSquaresContainerComponent {
-  _squares: Array<number> = [];
+  _squares: Array<unknown> = [];
   @Input({ required: true }) id: string | number = '';
   @Input() shouldShowId = true;
   @Input() squaresPerColumn = 0;
@@ -30,6 +30,10 @@ export class NumberSquaresContainerComponent {
 
   @Input() set numberOfSquares(value: number) {
     this._squares = new Array(value);
+  }
+
+  trackBy(index: number, _: unknown): number {
+    return index;
   }
 
   onSquareSelectedChange(change: SquareSelectedChange<number>, index: number): void {

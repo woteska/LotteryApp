@@ -8,7 +8,7 @@
   }"
   class="number-squares-container">
   <app-square (selectedChange)="onSquareSelectedChange($event, index)"
-              *ngFor="let _ of _squares; let index = index"
+              *ngFor="let _ of _squares; let index = index; trackBy: trackBy"
               [isDisabled]="isDisabled"
               [isSelected]="selectedValues | isIn: index + offset"
               [selectionBehaviour]="selectionBehaviour"
