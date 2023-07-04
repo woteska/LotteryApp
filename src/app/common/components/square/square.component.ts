@@ -22,7 +22,7 @@ export class SquareComponent<T extends string | number> {
   @Output() readonly selectedChange = new EventEmitter<SquareSelectedChange<T>>();
   @ViewChild(MatRipple) readonly ripple: MatRipple | null = null;
 
-  launchRipple() {
+  launchRipple(): void {
     if (!this.ripple) {
       return;
     }

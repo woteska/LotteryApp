@@ -31,6 +31,7 @@ export class AuthService {
           if (check !== UserCredentialsCheck.Valid) {
             throw new Error('Invalid user credentials.');
           }
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const { password, ...rest } = loginDto;
           this.store.dispatch(UsersActions.setLoggedInUser({ user: rest }));
           this.authGuardService.check();

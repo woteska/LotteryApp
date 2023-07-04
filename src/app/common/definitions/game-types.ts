@@ -1,6 +1,6 @@
 import { GameType } from './game-type';
 
-export const GameTypes: Readonly<{ [gameName: string]: GameType }> = {
+export const GameTypes: Readonly<{ [gameName: string]: GameType; }> = {
   '5': {
     rules: {
       numberOfPlaygrounds: 4,

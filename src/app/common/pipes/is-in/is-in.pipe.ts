@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'isIn',
+  name: 'appIsIn',
   standalone: true,
   pure: true
 })

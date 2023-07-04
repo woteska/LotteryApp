@@ -1,4 +1,5 @@
 <div (click)="onSelect()"
+     (keydown.enter)="onSelect()"
      (mouseenter)="launchRipple()"
      [matRippleCentered]="true"
      [matRippleDisabled]="isDisabled"
@@ -10,7 +11,8 @@
      'width': size,
      'height': size
      }"
-     matRipple>
+     matRipple
+     tabindex="0">
   <span *ngIf="isSelected"
         class="square__mark">&times;</span>
   <span class="square__value">{{value}}</span>

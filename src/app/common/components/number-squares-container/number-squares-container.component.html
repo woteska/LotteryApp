@@ -10,7 +10,7 @@
   <app-square (selectedChange)="onSquareSelectedChange($event, index)"
               *ngFor="let _ of _squares; let index = index; trackBy: trackBy"
               [isDisabled]="isDisabled"
-              [isSelected]="selectedValues | isIn: index + offset"
+              [isSelected]="selectedValues | appIsIn: index + offset"
               [selectionBehaviour]="selectionBehaviour"
               [size]="squaresSize"
               [value]="index + offset"

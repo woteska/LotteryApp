@@ -1,4 +1,5 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
+import { Game } from '../../definitions/game';
 import { GameId } from '../../definitions/game-id';
 import { GameValidity } from '../../definitions/game-validity';
 import { PlaygroundValidity } from '../../definitions/playground-validity';
@@ -8,13 +9,13 @@ export const selectGamesState = createFeatureSelector<fromGames.GamesState>(from
 
 const selectGames = createSelector(selectGamesState, state => state.games);
 
-export const selectGame = (props: { id: GameId }) =>
+export const selectGame = (props: { id: GameId; }): MemoizedSelector<object, Game> =>
   createSelector(selectGames, games => {
       return games[props.id];
     }
   );
 
-export const selectCheckGameValidity = (props: { id: GameId }) =>
+export const selectCheckGameValidity = (props: { id: GameId; }): MemoizedSelector<object, GameValidity> =>
   createSelector(selectGame({ id: props.id }), game => {
       let hasInvalidPlayground = false;
 

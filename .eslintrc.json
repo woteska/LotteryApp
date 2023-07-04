@@ -30,6 +30,160 @@
             "prefix": "app",
             "style": "kebab-case"
           }
+        ],
+        "@angular-eslint/pipe-prefix": [
+          "error",
+          {
+            "prefixes": [
+              "app"
+            ]
+          }
+        ],
+        "prefer-arrow-callback": "error",
+        "@angular-eslint/contextual-decorator": "error",
+        "@angular-eslint/contextual-lifecycle": "error",
+        "@angular-eslint/no-attribute-decorator": "error",
+        "@angular-eslint/no-output-native": "error",
+        "@angular-eslint/use-injectable-provided-in": "error",
+        "@angular-eslint/use-lifecycle-interface": "error",
+        "@angular-eslint/no-conflicting-lifecycle": "error",
+        "@angular-eslint/no-input-rename": "error",
+        "@angular-eslint/no-output-on-prefix": "error",
+        "@angular-eslint/no-output-rename": "error",
+        "@angular-eslint/prefer-output-readonly": "error",
+        "@angular-eslint/relative-url-prefix": "error",
+        "@angular-eslint/component-class-suffix": "error",
+        "@angular-eslint/directive-class-suffix": "error",
+        "@angular-eslint/no-host-metadata-property": "error",
+        "@angular-eslint/no-inputs-metadata-property": "error",
+        "@angular-eslint/no-outputs-metadata-property": "error",
+        "@angular-eslint/no-queries-metadata-property": "error",
+        "@angular-eslint/use-pipe-transform-interface": "error",
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowExpressions": true
+          }
+        ],
+        "@typescript-eslint/member-delimiter-style": [
+          "error",
+          {
+            "multiline": {
+              "delimiter": "semi",
+              "requireLast": true
+            },
+            "singleline": {
+              "delimiter": "semi",
+              "requireLast": true
+            },
+            "overrides": {
+              "interface": {
+                "multiline": {
+                  "delimiter": "semi",
+                  "requireLast": true
+                },
+                "singleline": {
+                  "delimiter": "semi",
+                  "requireLast": true
+                }
+              }
+            }
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "interface",
+            "format": [
+              "StrictPascalCase"
+            ],
+            "custom": {
+              "regex": "^I[A-Z]",
+              "match": false
+            }
+          },
+          {
+            "selector": "typeAlias",
+            "format": [
+              "StrictPascalCase"
+            ],
+            "custom": {
+              "regex": "^I[A-Z]",
+              "match": false
+            }
+          }
+        ],
+        "@typescript-eslint/no-empty-interface": [
+          "error",
+          {
+            "allowSingleExtends": false
+          }
+        ],
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-non-null-assertion": "error",
+        "@typescript-eslint/prefer-readonly": [
+          "error",
+          {
+            "onlyInlineLambdas": false
+          }
+        ],
+        "@typescript-eslint/typedef": [
+          "error",
+          {
+            "arrowParameter": false,
+            "variableDeclaration": false
+          }
+        ],
+        "comma-dangle": [
+          "error",
+          "never"
+        ],
+        "no-console": [
+          "warn",
+          {
+            "allow": [
+              "warn",
+              "error"
+            ]
+          }
+        ],
+        "no-duplicate-imports": [
+          "error",
+          {
+            "includeExports": true
+          }
+        ],
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 1,
+            "maxEOF": 0,
+            "maxBOF": 0
+          }
+        ],
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "src/*"
+                ],
+                "message": "Absolute import path is forbidden, please use relative"
+              }
+            ]
+          }
+        ],
+        "semi": [
+          "error",
+          "always"
+        ],
+        "@typescript-eslint/no-use-before-define": "error",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "^_"
+          }
         ]
       }
     },
@@ -41,7 +195,12 @@
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility"
       ],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/template/banana-in-box": "error",
+        "@angular-eslint/template/no-any": "error",
+        "@angular-eslint/template/no-negated-async": "error",
+        "@angular-eslint/template/conditional-complexity": "error"
+      }
     },
     {
       "files": [

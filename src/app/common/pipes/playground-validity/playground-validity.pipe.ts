@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { PlaygroundValidity } from '../../definitions/playground-validity';
 
 @Pipe({
-  name: 'playgroundValidity',
+  name: 'appPlaygroundValidity',
   standalone: true,
   pure: true
 })

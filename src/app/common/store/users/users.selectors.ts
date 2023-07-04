@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
 import { LoginDto } from '../../definitions/login-dto';
 import { UserCredentialsCheck } from '../../definitions/user-credentials-check';
 import * as fromUsers from './users.reducer';
@@ -7,6 +7,7 @@ export const selectUsersState = createFeatureSelector<fromUsers.UsersState>(from
 
 export const selectUsers = createSelector(selectUsersState, state => {
   return state.users.map(user => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...rest } = user;
     return rest;
   });
@@ -14,7 +15,9 @@ export const selectUsers = createSelector(selectUsersState, state => {
 
 const selectUsersWithPasswords = createSelector(selectUsersState, state => state.users);
 
-export const selectUserCredentialsCheck = (props: { loginDto: LoginDto }) =>
+export const selectUserCredentialsCheck = (props: {
+  loginDto: LoginDto;
+}): MemoizedSelector<object, UserCredentialsCheck> =>
   createSelector(selectUsersWithPasswords, users => {
 
       const foundUser = users.find(user => user.name === props.loginDto.name);
