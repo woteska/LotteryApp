@@ -13,10 +13,23 @@ export class RandomService {
   }
 
   getRandomIntegers(n: number, options?: RandomIntegerOptions): Array<number> {
-    const integersToReturn: Array<number> = [];
-    for (let i = 0; i < n; i++) {
-      integersToReturn.push(this.getRandomInteger(options));
+    const shouldBeUnique = options?.shouldBeUnique ?? false;
+    if (options && options.max !== undefined && options.min !== undefined && shouldBeUnique) {
+      if (this.canRunOutOfUniqueValues(n, options.min, options.max)) {
+        throw Error('Cannot generate {{n}} numbers because {{n}} is greater than min-max interval.');
+      }
     }
-    return integersToReturn;
+    const integersToReturn = new Set<number>();
+    while (integersToReturn.size < n) {
+      const randomInteger = this.getRandomInteger(options);
+      if (!shouldBeUnique || !integersToReturn.has(randomInteger)) {
+        integersToReturn.add(randomInteger);
+      }
+    }
+    return Array.from(integersToReturn);
+  }
+
+  private canRunOutOfUniqueValues(n: number, min: number, max: number): boolean {
+    return n < (max - min);
   }
 }
