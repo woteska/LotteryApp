@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatRippleModule } from '@angular/material/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { MatRipple, MatRippleModule } from '@angular/material/core';
 import { SquareSelectedChange } from './square-selected-change';
 import { SquareSelectionBehaviour } from './square-selection-behaviour';
 
@@ -20,6 +20,14 @@ export class SquareComponent<T extends string | number> {
   @Input() isDisabled = false;
   @Output() readonly isSelectedChange = new EventEmitter<boolean>();
   @Output() readonly selectedChange = new EventEmitter<SquareSelectedChange<T>>();
+  @ViewChild(MatRipple) readonly ripple: MatRipple | null = null;
+
+  launchRipple() {
+    if (!this.ripple) {
+      return;
+    }
+    this.ripple.launch({ centered: true });
+  }
 
   onSelect(): void {
     if (this.isDisabled || this.value === null) {
