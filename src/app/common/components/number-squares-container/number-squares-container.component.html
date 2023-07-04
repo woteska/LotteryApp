@@ -1,0 +1,19 @@
+<div
+  [ngStyle]="{
+  'width': 'fit-content',
+  'height': 'fit-content',
+  'grid-gap': squaresGap,
+  'grid-template-columns': 'repeat(' + squaresPerColumn + ', 1fr)',
+  'grid-template-rows': 'repeat(' + squaresPerColumn + ', 1fr)'
+  }"
+  class="number-squares-container">
+  <app-square (selectedChange)="onSquareSelectedChange($event, index)"
+              *ngFor="let _ of _squares; let index = index"
+              [isDisabled]="isDisabled"
+              [isSelected]="selectedValues | isIn: index + offset"
+              [selectionBehaviour]="selectionBehaviour"
+              [size]="squaresSize"
+              [value]="index + offset"
+              class="number-squares__item"></app-square>
+  <app-content-overlay [content]="containerId"></app-content-overlay>
+</div>
