@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { BaseUser } from '../../common/definitions/base-user';
 import { AuthService } from '../../common/services/auth/auth.service';
 import * as UsersSelectors from './../../common/store/users/users.selectors';
 import { LoginForm, LoginFormSchema } from './login-form';
@@ -59,6 +60,10 @@ export class LoginComponent implements OnDestroy {
           this.isLoginInProgress = false;
         }
       });
+  }
+
+  trackBy(index: number, item: BaseUser): string {
+    return item.name;
   }
 
   private getForm(): LoginForm {
