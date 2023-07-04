@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserInitializerService } from './common/services/user-initializer/user-initializer.service';
 import { metaReducers, reducers } from './common/store';
+import { GamesEffects } from './common/store/games/games.effects';
 import { UsersEffects } from './common/store/users/users.effects';
 
 @NgModule({
@@ -36,7 +37,7 @@ import { UsersEffects } from './common/store/users/users.effects';
           strictActionTypeUniqueness: true
         }
       }),
-    EffectsModule.forRoot([UsersEffects]),
+    EffectsModule.forRoot([UsersEffects, GamesEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
