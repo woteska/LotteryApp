@@ -20,7 +20,7 @@ export const selectUserCredentialsCheck = (props: {
 }): MemoizedSelector<object, UserCredentialsCheck> =>
   createSelector(selectUsersWithPasswords, users => {
 
-      const foundUser = users.find(user => user.name === props.loginDto.name);
+      const foundUser = users.find(user => user.username === props.loginDto.username);
       if (!foundUser) {
         return UserCredentialsCheck.NotFound;
       }

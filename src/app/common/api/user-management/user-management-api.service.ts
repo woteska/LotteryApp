@@ -13,10 +13,10 @@ export class UserManagementApiService {
 
   getUsers(): Observable<Array<User>> {
     return of([
-      { name: 'admin', id: 6781, password: 'admin' },
-      { name: 'operator', id: 4336, password: 'operator' },
-      { name: 'customer', id: 8512, password: 'customer' },
-      { name: 'employee', id: 3631, password: 'employee' }
+      { username: 'admin', userId: 6781, password: 'admin' },
+      { username: 'operator', userId: 4336, password: 'operator' },
+      { username: 'customer', userId: 8512, password: 'customer' },
+      { username: 'employee', userId: 3631, password: 'employee' }
     ]);
   }
 

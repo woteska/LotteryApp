@@ -3,7 +3,7 @@
     <span>LotteryApp</span>
     <div class="spacer"></div>
     <ng-container *ngIf="loggedInUser$ | async as loggedInUser">
-      <span>{{loggedInUser.name}}</span>
+      <span>{{loggedInUser.username}}</span>
       <button (click)="logout()" [matTooltip]="'Logout'" mat-icon-button>
         <mat-icon>logout</mat-icon>
       </button>

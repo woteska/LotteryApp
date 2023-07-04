@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { BaseUser } from '../../common/definitions/base-user';
+import { LoginDto } from '../../common/definitions/login-dto';
 import { AuthService } from '../../common/services/auth/auth.service';
 import * as UsersSelectors from './../../common/store/users/users.selectors';
 import { LoginForm, LoginFormSchema } from './login-form';
@@ -45,14 +46,25 @@ export class LoginComponent implements OnDestroy {
       return;
     }
 
+    const formValue = this.form.getRawValue();
+    const username = formValue.selectedUser?.username;
+    if (!username) {
+      return;
+    }
+
     this.isLoginInProgress = true;
     this.isPasswordVisible = false;
 
     // Prevent user from changing the form values during the login process.
     this.form.disable();
 
-    const formValue = this.form.getRawValue();
-    this.authService.login(formValue)
+    const loginDto: LoginDto = {
+      username,
+      userId: formValue.userId,
+      password: formValue.password
+    };
+
+    this.authService.login(loginDto)
       .subscribe({
         error: _ => {
           this.matSnackBar.open('Login failed as credentials are invalid.', 'OK');
@@ -63,14 +75,17 @@ export class LoginComponent implements OnDestroy {
   }
 
   trackBy(index: number, item: BaseUser): string {
-    return item.name;
+    return item.username;
   }
 
   private getForm(): LoginForm {
     return new FormGroup<LoginFormSchema>({
-      user: new FormControl(null, { nonNullable: false, validators: [Validators.required] }),
-      name: new FormControl({ value: '', disabled: true }, { nonNullable: true, validators: [Validators.required] }),
-      id: new FormControl(-1, {
+      selectedUser: new FormControl(null, { nonNullable: false, validators: [Validators.required] }),
+      username: new FormControl({ value: '', disabled: true }, {
+        nonNullable: true,
+        validators: [Validators.required]
+      }),
+      userId: new FormControl(-1, {
         nonNullable: true,
         validators: [Validators.required, Validators.pattern('[0-9]*')]
       }),
@@ -79,7 +94,7 @@ export class LoginComponent implements OnDestroy {
   }
 
   private subscribeToFormChanges(): void {
-    this.form.controls.user.valueChanges
+    this.form.controls.selectedUser.valueChanges
       .pipe(
         takeUntil(this.destroy$)
       )

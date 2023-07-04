@@ -4,8 +4,8 @@ import { BaseUser } from '../../common/definitions/base-user';
 export type LoginForm = FormGroup<LoginFormSchema>;
 
 export interface LoginFormSchema {
-  user: FormControl<BaseUser | null>;
-  name: FormControl<string>;
-  id: FormControl<number>;
+  selectedUser: FormControl<BaseUser | null>;
+  username: FormControl<string>;
+  userId: FormControl<number>;
   password: FormControl<string>;
 }
