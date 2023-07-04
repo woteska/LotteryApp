@@ -1,4 +1,4 @@
-<ul *ngFor="let playgroundValidity of gameValidity.playgrounds" class="game-validity">
+<ul *ngFor="let playgroundValidity of gameValidity.playgrounds; trackBy: trackBy" class="game-validity">
   <li class="game-validity__playground">
     <span
       class="game-validity__playground-name">

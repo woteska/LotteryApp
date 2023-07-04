@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { GameValidity } from '../../definitions/game-validity';
+import { PlaygroundValidity } from '../../definitions/playground-validity';
 import { PlaygroundValidityPipe } from '../../pipes/playground-validity/playground-validity.pipe';
 
 @Component({
@@ -13,4 +14,8 @@ import { PlaygroundValidityPipe } from '../../pipes/playground-validity/playgrou
 })
 export class GameValidityComponent {
   @Input({ required: true }) gameValidity: GameValidity = { id: '', isValid: false, playgrounds: [] };
+
+  trackBy(index: number, item: PlaygroundValidity): number {
+    return item.id;
+  }
 }
