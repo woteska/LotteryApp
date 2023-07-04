@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AppContainerComponent } from '../common/components/app-container/app-container.component';
 import { DeleteButtonComponent } from '../common/components/delete-button/delete-button.component';
+import { GameValidityComponent } from '../common/components/game-validity/game-validity.component';
 import {
   NumberSquaresContainerComponent
 } from '../common/components/number-squares-container/number-squares-container.component';
@@ -27,7 +28,8 @@ import { GameComponent } from './game/game.component';
     RandomButtonComponent,
     DeleteButtonComponent,
     PlayButtonComponent,
-    AppContainerComponent
+    AppContainerComponent,
+    GameValidityComponent
   ]
 })
 export class ApplicationsModule {

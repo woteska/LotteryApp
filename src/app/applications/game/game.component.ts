@@ -19,6 +19,8 @@ export class GameComponent {
   readonly id = this.gameService.createGameId();
   readonly gameType = GameTypes['6'];
   readonly game$: Observable<Game | undefined>;
+  readonly gameValidity$ = this.store.select(GamesSelectors.selectCheckGameValidity({ id: this.id }));
+  isValidityShown = false;
 
   constructor(private readonly randomService: RandomService,
               private readonly gameService: GameService,
@@ -40,6 +42,6 @@ export class GameComponent {
   }
 
   onPlay(): void {
-    void 0;
+    this.isValidityShown = true;
   }
 }

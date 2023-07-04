@@ -19,8 +19,14 @@
       </div>
     </div>
 
-    <div class="game_actions">
+    <div class="game__actions">
       <app-play-button (click)="onPlay()"></app-play-button>
     </div>
 
+    <div *ngIf="isValidityShown" class="game__validity">
+      <app-game-validity *ngIf="gameValidity$ | async as gameValidity"
+                         [gameValidity]="gameValidity"></app-game-validity>
+    </div>
+
   </div>
+</app-container>

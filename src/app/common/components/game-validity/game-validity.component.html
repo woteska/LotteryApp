@@ -1,0 +1,9 @@
+<ul *ngFor="let playgroundValidity of gameValidity.playgrounds" class="game-validity">
+  <li class="game-validity__playground">
+    <span
+      class="game-validity__playground-name">
+      Panel {{playgroundValidity.id + 1}}
+    </span>
+    : {{playgroundValidity | playgroundValidity}}
+  </li>
+</ul>
