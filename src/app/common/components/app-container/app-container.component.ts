@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { ThemePalette } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -18,6 +19,7 @@ import * as UsersSelectors from '../../store/users/users.selectors';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppContainerComponent {
+  @Input() color: ThemePalette = 'primary';
   readonly loggedInUser$ = this.store.select(UsersSelectors.selectLoggedInUser);
 
   constructor(private readonly store: Store) {
