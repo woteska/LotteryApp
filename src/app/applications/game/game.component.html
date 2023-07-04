@@ -8,7 +8,7 @@
         </div>
         <app-number-squares-container
           (selectedChange)="onNumbersSquareSelectedChange(game.id, playgroundIndex, $event.value)"
-          [containerId]="playgroundIndex + 1"
+          [id]="playgroundIndex + 1"
           [numberOfSquares]="game.rules.numberOfSquares"
           [selectedValues]="playground[1].selectedValues"
           [squaresPerColumn]="game.rules.squaresPerColumn"

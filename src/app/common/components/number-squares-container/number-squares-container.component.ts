@@ -17,8 +17,8 @@ import { NumberSquaresContainerSelectedChange } from './number-squares-container
 })
 export class NumberSquaresContainerComponent {
   _squares: Array<number> = [];
-  @Input({ required: true }) containerId: string | number = '';
-  @Input() shouldShowContainerId = true;
+  @Input({ required: true }) id: string | number = '';
+  @Input() shouldShowId = true;
   @Input() squaresPerColumn = 0;
   @Input() selectionBehaviour: SquareSelectionBehaviour = SquareSelectionBehaviour.EmitOnly;
   @Input() selectedValues: Array<number> = [];
@@ -36,7 +36,7 @@ export class NumberSquaresContainerComponent {
     this.selectedChange.emit({
       ...change,
       index,
-      containerId: this.containerId
+      id: this.id
     });
   }
 }

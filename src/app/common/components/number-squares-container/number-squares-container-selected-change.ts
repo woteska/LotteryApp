@@ -1,6 +1,6 @@
 import { SquareSelectedChange } from '../square/square-selected-change';
 
 export interface NumberSquaresContainerSelectedChange extends SquareSelectedChange<number> {
-  containerId: string | number;
+  id: string | number;
   index: number;
 }
