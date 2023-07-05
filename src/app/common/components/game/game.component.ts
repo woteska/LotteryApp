@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { Game } from '../../definitions/game';
 import { GameId } from '../../definitions/game-id';
 import { GameValidity } from '../../definitions/game-validity';
+import { Playground } from '../../definitions/playground';
 import { DeleteButtonComponent } from '../delete-button/delete-button.component';
 import { GameValidityComponent } from '../game-validity/game-validity.component';
 import { NumberSquaresContainerComponent } from '../number-squares-container/number-squares-container.component';
@@ -37,6 +38,10 @@ export class GameComponent {
 
   onSelectedChange(gameId: GameId, playgroundIndex: number, value: number): void {
     this.selectionChange.emit({ gameId, playgroundIndex, value });
+  }
+
+  trackBy(index: number, playground: [id: number, playgroud: Playground]): number {
+    return playground[0];
   }
 
   onGenerateRandomValues(gameId: GameId, playgroundIndex: number): void {

@@ -1,6 +1,7 @@
 <div *ngIf="game" class="game">
   <div class="game__playground-container">
-    <div *ngFor="let playground of game.playgrounds; let playgroundIndex = index" class="game__playground">
+    <div *ngFor="let playground of game.playgrounds; let playgroundIndex = index; trackBy: trackBy"
+         class="game__playground">
       <div class="game__playground-inner">
         <div class="game__playground-actions">
           <app-random-button (clicked)="onGenerateRandomValues(game.id, playgroundIndex)"></app-random-button>
